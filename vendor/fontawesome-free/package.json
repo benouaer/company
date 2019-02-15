@@ -2,7 +2,7 @@
   "_args": [
     [
       "@fortawesome/fontawesome-free@5.3.1",
-      "/home/taleb/projects/website/company/docs"
+      "/home/taleb/projects/company/repos/company"
     ]
   ],
   "_from": "@fortawesome/fontawesome-free@5.3.1",
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.3.1.tgz",
   "_spec": "5.3.1",
-  "_where": "/home/taleb/projects/website/company/docs",
+  "_where": "/home/taleb/projects/company/repos/company",
   "author": {
     "name": "Dave Gandy",
     "email": "dave@fontawesome.com",
