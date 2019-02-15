@@ -18,7 +18,7 @@ var banner = ['/*!\n',
 ].join('');
 
 // Copy third party libraries from /node_modules into /vendor
-gulp.task('vendor', function() {
+gulp.task('vendor', function(done) {
 
   // Bootstrap
   gulp.src([
@@ -46,6 +46,8 @@ gulp.task('vendor', function() {
       './node_modules/jquery.easing/*.js'
     ])
     .pipe(gulp.dest('./vendor/jquery-easing'))
+  
+    done();
 
 });
 
