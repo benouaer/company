@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var autoprefixer = require('gulp-autoprefixer');
 var pkg = require('./package.json');
 var browserSync = require('browser-sync').create();
+var nunjucks = require('gulp-nunjucks');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -85,7 +86,7 @@ gulp.task('css:minify', gulp.series('css:compile', function(done) {
 gulp.task('css', gulp.series('css:compile', 'css:minify'));
 
 // Minify JavaScript
-gulp.task('js:minify', function(done) {
+gulp.task('js:minify', function() {
   return gulp.src([
       './js/*.js',
       '!./js/*.min.js'
@@ -104,8 +105,15 @@ gulp.task('js:minify', function(done) {
 // JS
 gulp.task('js', gulp.series('js:minify'));
 
+gulp.task('nunjucks', function(done) {
+    gulp.src('templates/index.html')
+        .pipe(nunjucks.compile())
+        .pipe(gulp.dest('.'));
+    done();
+});
+
 // Default task
-gulp.task('default', gulp.series('css', 'js', 'vendor'));
+gulp.task('default', gulp.series('css', 'js', 'vendor', 'nunjucks'));
 
 // Configure the browserSync task
 gulp.task('browserSync', function(done) {
@@ -118,9 +126,10 @@ gulp.task('browserSync', function(done) {
 });
 
 // Dev task
-gulp.task('dev', gulp.series('css', 'js', 'browserSync', function(done) {
+gulp.task('dev', gulp.series('css', 'js', 'nunjucks', 'browserSync', function(done) {
   gulp.watch('./scss/*.scss', gulp.series('css'));
   gulp.watch('./js/*.js', gulp.series('js'));
-  gulp.watch('./*.html', browserSync.reload);
+  gulp.watch('templates/*.html', gulp.series('nunjucks'));
+  gulp.watch('templates/*.html', browserSync.reload);
   done();
 }));
