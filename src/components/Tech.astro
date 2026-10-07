@@ -1,0 +1,20 @@
+---
+const tech = [
+  ['opa', 'Open Policy Agent'], ['java8-logo', 'Java'], ['owasp-logo', 'OWASP'], ['camel-logo', 'Apache Camel'],
+  ['cxf-logo', 'Apache CXF'], ['servicemix-logo', 'Apache ServiceMix'], ['spring-logo', 'Spring'],
+  ['spring-boot-logo', 'Spring Boot'], ['apache-maven-logo', 'Apache Maven'], ['nodejs-logo', 'Node.js'],
+  ['es6-logo', 'ES6'], ['html5-logo', 'HTML5'], ['aws-logo', 'AWS'], ['linux-logo', 'Linux'], ['git-logo', 'Git'],
+];
+---
+
+<section id="tech" class="section alt">
+  <div class="container">
+    <h2>Technologies</h2>
+    <p class="sub">Our team have worked with a wide range of technologies.</p>
+    <ul class="tech-grid">
+      {tech.map(([file, name]) => (
+        <li><img src={`/img/tech/${file}.png`} alt={name} loading="lazy" /></li>
+      ))}
+    </ul>
+  </div>
+</section>

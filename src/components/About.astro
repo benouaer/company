@@ -1,0 +1,26 @@
+---
+const steps = [
+  { img: '1', when: '2015–2017', title: 'Our humble beginnings', text: 'Started a partnership with Solirius Consulting, as associates to help deliver software solutions.' },
+  { img: '2', when: 'September 2017', title: 'Official incorporation', text: 'Incorporated as a limited company specialising in technology consulting.' },
+  { img: '3', when: 'December 2018', title: 'New ventures', text: 'New projects, new locations, same successful and timely delivery.' },
+];
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <h2>About</h2>
+    <p class="sub">From small associates to trusted partners.</p>
+    <ol class="timeline">
+      {steps.map((s) => (
+        <li>
+          <img src={`/img/about/${s.img}.jpg`} alt="" loading="lazy" width="120" height="120" />
+          <div>
+            <p class="when">{s.when}</p>
+            <h3>{s.title}</h3>
+            <p class="muted">{s.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

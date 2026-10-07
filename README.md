@@ -1,19 +1,33 @@
-# Company website
-A small business website based on the Start-Bootstrap template. 
-https://benouaer.github.io/company/
+# Benouaer Technology Consulting website
 
-### Advanced Usage
-After installation, run `npm install` and then run `gulp dev` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+Built with [Astro](https://astro.build). Deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `master`.
 
-#### Gulp Tasks
-- `gulp` the default task that builds everything
-- `gulp dev` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
+## Development
+```
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # outputs to dist/
+```
 
-You must have npm and Gulp installed globally on your machine in order to use these features.
+## Editing content
+- Page sections: `src/components/*.astro`
+- Site name, email, LinkedIn URL, navigation: `src/config.ts`
+- Styles and colours: `src/styles/global.css`
+- Images: `public/img/`
 
-## Copyright and License
+## Publishing a blog post
+Add a Markdown file to `src/content/blog/`, for example `my-post.md`:
+```
+---
+title: My first post
+description: One-line summary.
+date: 2026-10-08
+---
+Post content here.
+```
+Set `draft: true` in the front matter to hide a post.
 
-Copyright 2018 Benouaer Technology Consulting Ltd. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-agency/blob/gh-pages/LICENSE) license.
+## Deployment setup
+In the repository settings, go to Pages and set Source to **GitHub Actions** (one-time).
+
+Released under the [MIT](LICENSE) licence.
