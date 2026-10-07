@@ -1,0 +1,41 @@
+---
+const services = [
+  {
+    img: '01',
+    title: 'Software development',
+    intro: 'Backend and frontend development',
+    items: ['Java', 'NodeJS / Express', 'Angular, ngRx, RxJS', 'VueJS, HTML, CSS'],
+  },
+  {
+    img: '02',
+    title: 'Systems integration',
+    intro: 'Web services, messaging and security',
+    items: ['SOAP web services', 'RESTful APIs', 'Message queues (JMS)', 'Apache Camel'],
+  },
+  {
+    img: '03',
+    title: 'Technology consulting',
+    intro: 'Public sector, banking and retail',
+    items: ['Trusted partner', 'Experienced team', 'Hands-on support'],
+  },
+];
+---
+
+<section id="services" class="section">
+  <div class="container">
+    <h2>Services</h2>
+    <p class="sub">Through successful collaboration with our partners, we have helped deliver various transformation programmes.</p>
+    <div class="grid-3">
+      {services.map((s) => (
+        <article class="card">
+          <img src={`/img/portfolio/${s.img}-thumbnail.jpg`} alt="" loading="lazy" width="750" height="500" />
+          <div class="card-body">
+            <h3>{s.title}</h3>
+            <p class="muted">{s.intro}</p>
+            <ul class="ticks">{s.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

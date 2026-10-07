@@ -1,0 +1,16 @@
+---
+import { BASE_NAV } from '../config';
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="brand" aria-label="Benouaer Technology Consulting, home">
+      <img src="/img/logos/benouaer.png" alt="Benouaer Technology Consulting" height="48" />
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        {BASE_NAV.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+</header>

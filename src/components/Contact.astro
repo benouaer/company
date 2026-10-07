@@ -1,0 +1,30 @@
+---
+import { SITE } from '../config';
+const [user, domain] = SITE.email.split('@');
+---
+
+<section id="contact" class="section">
+  <div class="container narrow center">
+    <h2>Contact us</h2>
+    <p class="sub">Drop us a line, we'd love to hear from you.</p>
+    <p>
+      <a class="btn" id="mailto" href="#contact" data-user={user} data-domain={domain}>
+        Email us
+      </a>
+      <a class="btn btn-outline" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
+        Connect on LinkedIn
+      </a>
+    </p>
+    <noscript><p class="muted">Email: {user} [at] {domain}</p></noscript>
+  </div>
+</section>
+
+<script>
+  // The address is assembled in the browser so basic scrapers don't pick it up.
+  const el = document.getElementById('mailto') as HTMLAnchorElement | null;
+  if (el) {
+    const address = `${el.dataset.user}@${el.dataset.domain}`;
+    el.href = `mailto:${address}`;
+    el.title = address;
+  }
+</script>

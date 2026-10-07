@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Blog | Benouaer Technology Consulting" description="Insights and case studies from Benouaer Technology Consulting.">
+  <section class="section">
+    <div class="container narrow">
+      <h1 class="page-title">Blog</h1>
+      <p class="sub left">Insights and case studies from our work.</p>
+      {posts.length === 0 ? (
+        <p class="placeholder">Our first articles and case studies are coming soon. Check back shortly.</p>
+      ) : (
+        <ul class="posts">
+          {posts.map((p) => (
+            <li>
+              <a href={`/blog/${p.id}/`}><h2>{p.data.title}</h2></a>
+              <time datetime={p.data.date.toISOString()}>{p.data.date.toLocaleDateString('en-GB', { dateStyle: 'long' })}</time>
+              <p class="muted">{p.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>

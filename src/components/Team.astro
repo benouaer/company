@@ -1,0 +1,27 @@
+---
+import LinkedIn from './LinkedIn.astro';
+const team = [
+  { img: 'asma', name: 'Asma Aroun', role: 'Co-founder', url: 'https://www.linkedin.com/in/dr-asma-aroun-64a166a/' },
+  { img: 'taleb', name: 'Taleb Benouaer', role: 'Founder / Lead developer', url: 'https://www.linkedin.com/in/benouaer/' },
+];
+---
+
+<section id="team" class="section alt">
+  <div class="container">
+    <h2>Our team</h2>
+    <p class="sub">We are here to help.</p>
+    <div class="team">
+      {team.map((m) => (
+        <figure class="member">
+          <img src={`/img/team/${m.img}.jpg`} alt={m.name} loading="lazy" width="144" height="144" />
+          <figcaption>
+            <h3>{m.name}</h3>
+            <p class="muted">{m.role}</p>
+            <LinkedIn href={m.url} label={`${m.name} on LinkedIn`} />
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="lead">Our team have the skills and experience to help you achieve your technology objectives.</p>
+  </div>
+</section>
